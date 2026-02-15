@@ -48,8 +48,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'yarn'
-          cache-dependency-path: ${{ inputs.system-dir }}/yarn.lock
+          cache: 'npm'
+          cache-dependency-path: ${{ inputs.system-dir }}/package-lock.json
 
       - name: Setup Java (Android SDK)
         uses: actions/setup-java@v4
@@ -58,7 +58,7 @@ jobs:
           java-version: '17'
 
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Build Android APK
         run: |
